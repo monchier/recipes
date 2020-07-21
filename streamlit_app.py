@@ -1,14 +1,22 @@
 import streamlit as st
 from google.cloud import storage
 import json
+import hashlib
 
 storage_client = storage.Client()
 
 bucket_name = "recipes-storage"
 
 
-bucket = storage_client.get_bucket(bucket_name)
+bucket = storage_client.get_bucket(bucket_name, client_options={"credentials_file": "credentials.json"})
 
+user = st.sidebar.text_input("username")
+password = st.sidebar.text_input("password", type="password")
+m = hashlib.sha256()
+m.update(password)
+password_digest = m.digest()
+
+# get file and decrypt
 
 mode = st.sidebar.selectbox("Choose one", ["Read recipes", "Add a new recipe"])
 
