@@ -10,7 +10,7 @@ bucket_name = "recipes-storage"
 mode = st.sidebar.selectbox("Choose one", ["Read recipes", "Add a new recipe"])
 
 if mode == "Read recipes":
-    storage_client = storage.Client.from_service_account_json("credentials.json")
+    storage_client = storage.Client()
     bucket = storage_client.get_bucket(bucket_name)
     for blob in bucket.list_blobs():
         data = json.loads(blob.download_as_string())
