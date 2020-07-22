@@ -23,6 +23,7 @@ else:
 
     if os.path.exists("write_credentials.json"):
         writer_storage_client = storage.Client.from_service_account_json("write_credentials.json")
+        os.remove("write_credentials.json")
         bucket = writer_storage_client.get_bucket(bucket_name)
         name = st.text_input("Name")
         labels = st.text_input("Labels (comma separated)").split(",")
