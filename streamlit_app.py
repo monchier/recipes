@@ -23,7 +23,7 @@ else:
 
     if os.path.exists("write_credentials.json"):
         try:
-        writer_storage_client = storage.Client.from_service_account_json("write_credentials.json")
+            writer_storage_client = storage.Client.from_service_account_json("write_credentials.json")
         except:
             st.error("Invalid credentials.")
 
