@@ -14,7 +14,7 @@ if mode == "Read recipes":
     bucket = storage_client.get_bucket(bucket_name)
     for blob in bucket.list_blobs():
         data = json.loads(blob.download_as_string())
-        st.markdown(f"# {data['name']}\n{data['description']}\n---")
+        st.markdown(f"# {data['name']}\n{data['description']}\n---\n")
 else:
     key = st.sidebar.text_input("key", type="password")
     if key is not None and len(key) > 0:
