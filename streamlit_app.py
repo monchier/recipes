@@ -4,7 +4,7 @@ import json
 import hashlib
 import os
 
-
+st.title("Recipes App")
 bucket_name = "recipes-storage"
 
 mode = st.sidebar.selectbox("Choose one", ["Read recipes", "Add a new recipe"])
